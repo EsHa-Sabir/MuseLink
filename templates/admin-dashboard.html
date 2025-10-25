@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis Admin Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/css/admin-dashboard.css">
+</head>
+
+<body>
+    <div class="aurora-background">
+        <div class="aurora-dot"></div>
+        <div class="aurora-dot"></div>
+        <div class="aurora-dot"></div>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="logo">MuseLink Admin</a>
+                <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="9" y1="3" x2="9" y2="21" /></svg>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="overview-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" /></svg>
+                    <span>Overview</span>
+                </a>
+                <a href="#" class="nav-item" data-page="user-management-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span>User Management</span>
+                </a>
+                <a href="#" class="nav-item" data-page="roles-permissions-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Roles & Permissions</span>
+                </a>
+                <a href="#" class="nav-item" data-page="audit-security-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Audit & Security</span>
+                </a>
+                <a href="#" class="nav-item" data-page="content-oversight-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    <span>Content Oversight</span>
+                </a>
+                <a href="#" class="nav-item" data-page="drive-backups-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span>Drive & Backups</span>
+                </a>
+                 <a href="#" class="nav-item" data-page="system-settings-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>System Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="theme-switcher-wrapper">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <span>Theme</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <a href="#" class="nav-item logout-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content" id="main-content">
+            <header class="main-header">
+                <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </header>
+
+            <div class="page is-active" id="overview-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Admin Overview</h1>
+                        <p>A high-level view of system activity and health.</p>
+                    </div>
+                </div>
+                <div class="stats-grid" id="admin-stats-grid">
+                    </div>
+                <div class="charts-grid">
+                    <div class="card chart-card">
+                        <h3>User Growth (Last 30 Days)</h3>
+                        <canvas id="user-growth-chart"></canvas>
+                    </div>
+                    <div class="card chart-card">
+                        <h3>User Role Distribution</h3>
+                        <canvas id="user-roles-chart"></canvas>
+                    </div>
+                    <div class="card chart-card">
+                        <h3>Content Pipeline Status</h3>
+                        <canvas id="content-status-chart"></canvas>
+                    </div>
+                    <div class="card chart-card activity-card">
+                        <h3>Recent System Activity</h3>
+                        <ul class="activity-feed" id="recent-activity-feed">
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="user-management-page">
+                <div class="page-header">
+                        <div class="page-header-info">
+                            <h1>User Management</h1>
+                            <p>Manage all registered users, their roles, and account status.</p>
+                        </div>
+                </div>
+                <div class="card">
+                    <div class="table-controls">
+                        <div class="search-bar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <input type="text" id="user-search-input" placeholder="Search by username, email...">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="user-management-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page" id="roles-permissions-page">
+                <div class="page-header">
+                        <div class="page-header-info">
+                            <h1>Roles & Permissions</h1>
+                            <p>Define system roles and assign granular permissions.</p>
+                        </div>
+                    <button class="btn btn-primary" id="create-role-btn">Create New Role</button>
+                </div>
+                <div class="roles-permissions-layout">
+                    <div class="card roles-list-panel">
+                        <h3>System Roles</h3>
+                        <ul id="roles-list"></ul>
+                    </div>
+                    <div class="card permissions-panel">
+                        <h3 id="permissions-panel-title">Select a role to manage permissions</h3>
+                        <div id="permissions-grid">
+                            <div class="permissions-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9.5 11.5 2 2 3-3"></path></svg>
+                                <p>Select a role from the list to view and edit its permissions.</p>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" id="save-permissions-btn" style="display: none;">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="audit-security-page">
+                <div class="page-header">
+                        <div class="page-header-info">
+                            <h1>Audit & Security</h1>
+                            <p>Monitor system logs and security-related events.</p>
+                        </div>
+                </div>
+                <div class="tabs-container">
+                    <button class="tab-button active" data-tab="audit-logs">Audit Logs</button>
+                    <button class="tab-button" data-tab="security-incidents">Security Incidents</button>
+                </div>
+                <div class="tab-content active" id="audit-logs-content">
+                        <div class="card">
+                           <div class="table-container">
+                                <table class="data-table" id="audit-logs-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>User</th>
+                                            <th>Action</th>
+                                            <th>IP Address</th>
+                                            <th>Status</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                           </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="security-incidents-content">
+                    <div class="card">
+                        <div class="table-container">
+                               <table class="data-table" id="security-incidents-table">
+                                  <thead>
+                                      <tr>
+                                          <th>Timestamp</th>
+                                          <th>Type</th>
+                                          <th>Severity</th>
+                                          <th>IP Address</th>
+                                          <th>Endpoint</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                               </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="content-oversight-page">
+                <div class="page-header">
+                        <div class="page-header-info">
+                            <h1>Content Oversight</h1>
+                            <p>Monitor platform-wide content creation and collaboration.</p>
+                        </div>
+                </div>
+                       <div class="stats-grid" id="content-stats-grid">
+                            </div>
+                <div class="card">
+                    <h3>Recent Ideas & Drafts</h3>
+                        <div class="table-container">
+                           <table class="data-table" id="recent-ideas-table">
+                              <thead>
+                                  <tr>
+                                      <th>Title</th>
+                                      <th>Owner</th>
+                                      <th>Team</th>
+                                      <th>Status</th>
+                                      <th>Created At</th>
+                                  </tr>
+                              </thead>
+                              <tbody></tbody>
+                           </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page" id="drive-backups-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Drive & Backups Oversight</h1>
+                        <p>Monitor storage usage and system backup status.</p>
+                    </div>
+                </div>
+                <div class="stats-grid" id="drive-stats-grid">
+                    </div>
+                <div class="card">
+                    <h3>Recent Backup History</h3>
+                    <div class="table-container">
+                        <table class="data-table" id="recent-backups-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Backup Name</th>
+                                    <th>Type</th>
+                                    <th>Owner/Team</th>
+                                    <th>Size</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+             <div class="page" id="system-settings-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>System Settings</h1>
+                        <p>Manage global platform configurations and policies.</p>
+                    </div>
+                </div>
+                <div class="settings-container">
+                    <div class="setting-card card">
+                        <h3>Platform Maintenance</h3>
+                        <p class="setting-description">Enable maintenance mode to temporarily disable user access for updates.</p>
+                        <div class="setting-toggle">
+                            <span>Enable Maintenance Mode</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="maintenance-mode-toggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-card card">
+                        <div class="setting-header">
+                              <h3>Backup Schedules</h3>
+                              <button class="btn btn-primary" id="create-schedule-btn">New Schedule</button>
+                        </div>
+                        <p class="setting-description">Configure automated backup schedules for user and team data.</p>
+                        <div class="table-container">
+                            <table class="data-table" id="backup-schedules-table">
+                                <thead>
+                                    <tr>
+                                        <th>Schedule Name</th>
+                                        <th>Target</th>
+                                        <th>Frequency</th>
+                                        <th>Retention (Days)</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="setting-card card">
+                        <h3>Encryption Policies</h3>
+                        <p class="setting-description">System-wide encryption settings (read-only view for security).</p>
+                        <div class="form-group">
+                            <label for="encryption-algorithm">Data-at-Rest Algorithm</label>
+                            <input type="text" id="encryption-algorithm" value="AES-256-GCM" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="hashing-algorithm">Password Hashing</label>
+                            <input type="text" id="hashing-algorithm" value="Argon2id" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="edit-user-modal">
+            <div class="modal-header">
+                <h2 id="edit-user-modal-title">Edit User</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-user-form">
+                    <input type="hidden" id="edit-user-id">
+                    <div class="form-group">
+                        <label for="edit-user-role">System Role</label>
+                         <div class="select-wrapper">
+                             <select id="edit-user-role"></select>
+                         </div>
+                    </div>
+                           <div class="form-group">
+                        <label for="edit-user-status">Account Status</label>
+                        <div class="select-wrapper">
+                             <select id="edit-user-status">
+                                 <option value="active">Active</option>
+                                 <option value="suspended">Suspended</option>
+                                 <option value="pending_verification">Pending Verification</option>
+                             </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save-user-changes-btn">Save Changes</button>
+            </div>
+        </div>
+
+        <div class="modal" id="create-role-modal">
+            <div class="modal-header">
+                <h2>Create New System Role</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="create-role-form">
+                    <div class="form-group">
+                        <label for="new-role-name">Role Name (e.g., content_manager)</label>
+                        <input type="text" id="new-role-name" required placeholder="A unique identifier">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-role-display-name">Display Name (e.g., Content Manager)</label>
+                        <input type="text" id="new-role-display-name" required placeholder="How the name appears">
+                    </div>
+                           <div class="form-group">
+                        <label for="new-role-level">Hierarchy Level (1-6)</label>
+                        <input type="number" id="new-role-level" min="1" max="6" value="4" required>
+                        <p class="form-hint">A lower number is more powerful (e.g., 1 = Super Admin).</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-create-role-btn">Create Role</button>
+            </div>
+        </div>
+
+        <div class="modal" id="backup-schedule-modal">
+            <div class="modal-header">
+                <h2 id="backup-schedule-modal-title">New Backup Schedule</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="backup-schedule-form">
+                    <input type="hidden" id="schedule-id">
+                    <div class="form-group">
+                        <label for="schedule-name">Schedule Name</label>
+                        <input type="text" id="schedule-name" required placeholder="e.g., Weekly Marketing Backups">
+                    </div>
+                    <div class="form-group">
+                        <label for="schedule-target">Target (User or Team ID)</label>
+                        <input type="text" id="schedule-target" required placeholder="Enter user_id or team_id">
+                        <p class="form-hint">Specify which user or team this schedule applies to.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="schedule-frequency">Frequency</label>
+                        <div class="select-wrapper">
+                            <select id="schedule-frequency">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="schedule-retention">Retention (Days)</label>
+                        <input type="number" id="schedule-retention" min="7" max="365" value="30" required>
+                        <p class="form-hint">How long to keep backups (7-365 days).</p>
+                    </div>
+                    <div class="form-group setting-toggle" style="padding: 0; border: none; background: none;">
+                        <span>Enable Schedule</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="schedule-active-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save-schedule-btn">Save Schedule</button>
+            </div>
+        </div>
+        
+        <div class="modal" id="confirm-modal">
+            <div class="modal-header">
+                <h2 id="confirm-modal-title">Are you sure?</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-modal-text">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirm-modal-btn">Confirm</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/admin-dashboard.js"></script>
+</body>
+
+</html>

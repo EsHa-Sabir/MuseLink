@@ -1,0 +1,3257 @@
+/* ===================================================================
+   GENESIS - REFINED DASHBOARD STYLESHEET (ELEGANT COPPER THEME)
+   ===================================================================
+*/
+
+/* ===== 1. THEME VARIABLES & GLOBAL STYLES ===== */
+
+/* Imports the main variables and base styles from another stylesheet */
+@import url('/static/css/style.css');
+
+/* Universal selector to reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+/* Enables smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Basic body styling */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    overflow: hidden; /* Prevents the main body from scrolling */
+}
+
+/* Basic styles for links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Removes default list styles */
+ul,
+li {
+    list-style: none;
+}
+
+/* Basic styles for heading elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+
+/* Basic styles for paragraphs */
+p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Hides elements visually but keeps them accessible for screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ===== 2. ANIMATED BACKGROUND ===== */
+
+/* Container for the animated background effect */
+.aurora-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Base style for the blurred, colored dots that create the aurora effect */
+.aurora-dot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.15;
+}
+
+/* Styling and animation for the first dot */
+.aurora-dot:nth-child(1) {
+    width: 500px;
+    height: 500px;
+    background: var(--aurora1);
+    top: -20%;
+    left: -10%;
+    animation: aurora 15s infinite alternate;
+}
+
+/* Styling and animation for the second dot */
+.aurora-dot:nth-child(2) {
+    width: 600px;
+    height: 600px;
+    background: var(--aurora2);
+    bottom: -30%;
+    right: -20%;
+    animation: aurora 12s infinite alternate-reverse;
+}
+
+/* Styling and animation for the third dot */
+.aurora-dot:nth-child(3) {
+    width: 400px;
+    height: 400px;
+    background: var(--aurora3);
+    bottom: 20%;
+    left: 20%;
+    animation: aurora 18s infinite;
+}
+
+/* Keyframe animation for the aurora dots to move and scale gently */
+@keyframes aurora {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(100px, 50px) scale(1.2);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+
+/* ===== 3. LAYOUT & SIDEBAR ===== */
+
+/* Main wrapper for the entire dashboard layout */
+.dashboard-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar main container */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    transition: width 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* Styles for the sidebar when it is collapsed */
+.sidebar.collapsed {
+    width: 88px;
+    padding: 1.5rem 1rem;
+}
+
+/* Hides text labels when the sidebar is collapsed */
+.sidebar.collapsed .sidebar-header .logo,
+.sidebar.collapsed .nav-item span,
+.sidebar.collapsed .sidebar-footer span {
+    display: none;
+}
+
+/* Adjusts the theme switch when sidebar is collapsed */
+.sidebar.collapsed .sidebar-footer .toggle-switch {
+    margin-left: auto;
+}
+
+/* Header section of the sidebar (logo and toggle button) */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    min-height: 32px;
+}
+
+/* Centers the toggle button when sidebar is collapsed */
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+}
+
+/* Logo styling */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Navigation links container in the sidebar */
+.sidebar-nav {
+    flex-grow: 1; /* Takes up available space */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Individual navigation item */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+/* SVG icon within a nav item */
+.nav-item svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+/* Hover effect for nav items */
+.nav-item:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Style for the currently active nav item */
+.nav-item.active {
+    background-color: color-mix(in srgb, var(--accent-start) 10%, transparent);
+    color: var(--text-primary);
+    border-left: 3px solid var(--accent-start);
+    font-weight: 600;
+}
+
+/* Footer section of the sidebar */
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Wrapper for the light/dark theme switcher */
+.theme-switcher-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Hides the appropriate sun/moon icon based on the current theme */
+html[data-theme='light'] .moon-icon,
+html[data-theme='dark'] .sun-icon {
+    display: none;
+}
+
+/* Allows the "Theme" text to fill available space */
+.theme-switcher-wrapper span {
+    flex-grow: 1;
+}
+
+/* Main content area to the right of the sidebar */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 2rem 3rem;
+}
+
+/* Header for mobile view (contains the hamburger menu toggle) */
+.main-header {
+    display: none; /* Hidden on desktop */
+    margin-bottom: 1rem;
+}
+
+/* Mobile navigation toggle button (hamburger icon) */
+.mobile-nav-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+/* ===== 4. GENERAL COMPONENTS (Buttons, Cards, Forms, Toggles) ===== */
+
+/* Base button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Primary button style (gradient) */
+.btn-primary {
+    background-image: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 4px 15px -5px var(--accent-start);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -5px var(--accent-start);
+    filter: brightness(1.1);
+}
+
+/* Secondary button style (bordered) */
+.btn-secondary {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-color);
+    border-color: color-mix(in srgb, var(--text-secondary) 50%, transparent);
+}
+
+/* Small button variant */
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}
+
+/* Full-width button variant */
+.btn-full {
+    width: 100%;
+}
+
+/* Base card component style */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: color-mix(in srgb, var(--text-secondary) 30%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group container for label and input */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Base style for form inputs, selects, and textareas */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder text style */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Focus style for form elements */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-start) 20%, transparent);
+}
+
+/* ========================================================= */
+/* ===== START: CALENDAR ICON DARK THEME FIX ===== */
+/* ========================================================= */
+
+/* This tells the browser to render the date picker's pop-up calendar with a dark theme */
+html[data-theme="dark"] input[type="date"] {
+    color-scheme: dark;
+}
+
+/* This inverts the color of the calendar icon to make it bright/white in dark mode */
+html[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(0.8);
+}
+
+/* This ensures the date picker's pop-up calendar stays light in light mode */
+html[data-theme="light"] input[type="date"] {
+    color-scheme: light;
+}
+
+/* ======================================================= */
+/* ===== END: CALENDAR ICON FIX ===== */
+/* ======================================================= */
+
+
+/* Container for an input field that has an icon inside it */
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+/* Styling for the icon inside the input */
+.input-with-icon .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Adds left padding to the input to make space for the icon */
+.input-with-icon input,
+.input-with-icon select,
+.input-with-icon textarea {
+    padding-left: 44px;
+}
+
+/* Adjusts icon position for textareas */
+.input-with-icon textarea~.input-icon {
+    top: 18px;
+    transform: none;
+}
+
+/* Container for form action buttons (e.g., Submit, Cancel) */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Wrapper for custom select dropdowns to add a custom arrow */
+.select-wrapper {
+    position: relative;
+}
+
+/* Custom arrow for select dropdowns */
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    background-color: var(--text-secondary);
+    -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3e%3cpath d='M7.41,8.59L12,13.17l4.59-4.58L18,10l-6,6l-6-6L7.41,8.59z'/%3e%3c/svg%3e");
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3e%3cpath d='M7.41,8.59L12,13.17l4.59-4.58L18,10l-6,6l-6-6L7.41,8.59z'/%3e%3c/svg%3e");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* Hides the default browser arrow on select elements */
+.form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Styles for the toggle switch component */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The background of the toggle switch */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* The moving circle inside the toggle switch */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Style for the toggle when it is checked/on */
+input:checked+.slider {
+    background-image: var(--accent-gradient);
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+/* ===== 5. PAGE-SPECIFIC STYLES ===== */
+
+/* --- Page Management --- */
+/* Base style for a page container, hidden by default */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Class to show the currently active page */
+.page.is-active {
+    display: block;
+}
+
+/* Fade-in animation for pages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header section for each page */
+.page-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.page-header-info h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.page-header-info p {
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+}
+
+/* --- Dashboard Page --- */
+/* Grid for statistics cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Individual statistic card */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Icon within the stat card */
+.stat-card-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background-color: color-mix(in srgb, var(--accent-start) 15%, transparent);
+    color: var(--accent-start);
+}
+
+/* Info section of the stat card */
+.stat-card-info h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.stat-card-info .stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* "Recent Ideas" section */
+.recent-ideas h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* List container for recent ideas */
+.ideas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* A single item in the ideas list */
+.idea-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.idea-item:hover {
+    background-color: var(--border-color);
+}
+
+.idea-item-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.idea-item-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.idea-item-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+
+/* --- My Ideas Page (Table) --- */
+/* Container for the table to allow horizontal scrolling on small screens */
+.table-container {
+    overflow-x: auto;
+    padding: 1rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.table-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Main table for listing all ideas */
+.ideas-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ideas-table th,
+.ideas-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Table header styles */
+.ideas-table thead {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.ideas-table th {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Table body row styles */
+.ideas-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.ideas-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.ideas-table tbody tr:hover {
+    background-color: var(--border-color);
+}
+
+.ideas-table .idea-title-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+}
+
+/* Base style for status badges */
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+}
+
+/* Different color styles for each status */
+.status-draft {
+    background-color: color-mix(in srgb, var(--text-secondary) 15%, transparent);
+    color: var(--text-secondary);
+}
+.status-in-progress {
+    background-color: rgba(96, 165, 250, 0.2);
+    color: #60A5FA;
+}
+.status-review {
+    background-color: rgba(251, 191, 36, 0.2);
+    color: #FBBF24;
+}
+.status-completed {
+    background-color: rgba(74, 222, 128, 0.2);
+    color: #4ADE80;
+}
+.status-archived {
+    background-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+/* Container for action buttons in the table (e.g., Edit, Delete) */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.action-buttons button:hover {
+    color: var(--accent-start);
+    background-color: var(--border-color);
+}
+
+/* Stacked avatar list for contributors */
+.contributors-list {
+    display: flex;
+    align-items: center;
+}
+
+.contributor-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 2px solid var(--bg-secondary);
+    margin-left: -8px; /* Creates the overlapping effect */
+    position: relative;
+    cursor: default;
+}
+
+.contributor-avatar:first-child {
+    margin-left: 0;
+}
+
+/* Tooltip that appears on hover to show the contributor's name */
+.contributor-avatar .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.2s;
+}
+
+.contributor-avatar:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* --- Create Idea Page / AI Studio --- */
+/* Tab container for Text, Image, Video, Voice generation */
+.ai-studio-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Individual tab button */
+.studio-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.studio-tab:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Style for the active tab */
+.studio-tab.active {
+    background-image: var(--accent-gradient);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 15px -5px var(--accent-start);
+}
+
+.studio-tab svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Content area for each tab, hidden by default */
+.studio-content {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.studio-content.active {
+    display: block;
+}
+
+/* Form container within the studio */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Section within a form (e.g., "Project Details") */
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* A row that can contain multiple form groups side-by-side */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* --- Draft Results Page --- */
+/* Grid layout for displaying generated results */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* A single result card */
+.result-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+/* A large preview area (e.g., for an icon or short text) */
+.result-preview {
+    font-size: 3rem;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.result-card p {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Action buttons for a result card (e.g., "Refine", "Regenerate") */
+.result-card-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.result-card-actions .btn {
+    flex: 1;
+}
+
+/* Loading state placeholder */
+.loading-state {
+    text-align: center;
+    padding: 4rem;
+}
+
+/* Spinner animation */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--accent-start);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 1rem auto 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Refine Editor Page --- */
+/* Container for the text editor */
+.editor-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* The main textarea for editing content */
+.refine-textarea {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.refine-textarea:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-start) 20%, transparent);
+}
+
+/* Action buttons for the editor (e.g., "Save", "View History") */
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* --- Teams Page --- */
+/* Main layout for the teams page (sidebar + content) */
+.teams-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1.5rem;
+    height: calc(100vh - 190px);
+}
+
+/* Left panel containing the list of teams */
+.teams-panel-left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for the list of teams to enable scrolling */
+.teams-list-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.teams-list-container h3,
+.create-team-container h3 {
+    margin-bottom: 1rem;
+}
+
+/* Container for the "Create New Team" form */
+.create-team-container {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* An individual team in the list */
+.teams-list li {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+    border-left: 3px solid transparent;
+}
+
+.teams-list li:hover {
+    background-color: var(--border-color);
+}
+
+/* Style for the currently selected team */
+.teams-list li.active {
+    background-color: color-mix(in srgb, var(--accent-start) 10%, transparent);
+    color: var(--text-primary);
+    border-left-color: var(--accent-start);
+    font-weight: 600;
+}
+
+/* Right panel showing details of the selected team */
+.teams-panel-right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Placeholder text when no team is selected */
+#team-details-placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    color: var(--text-secondary);
+}
+
+/* Main content area for team details */
+#team-details-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header within the team details panel */
+.team-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.team-header h2 {
+    flex-shrink: 0;
+}
+
+/* Form for inviting new members to the team */
+.invite-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.invite-form input {
+    flex-grow: 1;
+}
+
+/* List of team members */
+.team-members-list {
+    margin-bottom: 1.5rem;
+}
+
+.team-members-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+/* Badge indicating the role of a team member (Owner, Admin, etc.) */
+.role-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* Colors for different roles */
+.role-owner {
+    background-color: color-mix(in srgb, var(--accent-start) 25%, transparent);
+    color: var(--accent-start);
+}
+.role-admin {
+    background-color: color-mix(in srgb, var(--accent-start) 20%, transparent);
+    color: var(--accent-start);
+}
+.role-member {
+    background-color: color-mix(in srgb, var(--accent-start) 15%, transparent);
+    color: var(--accent-start);
+}
+
+/* Container for ideas belonging to the team */
+.team-ideas-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.team-ideas-container h3 {
+    margin-bottom: 1rem;
+}
+
+/* Makes the team ideas list scrollable if it gets too long */
+#team-ideas-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Specific input styles for the invite form */
+.invite-form input[type="email"] {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+    width: auto;
+}
+
+.invite-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-start) 20%, transparent);
+}
+
+
+/* --- Drive Page --- */
+/* Main layout for the Drive page (folder sidebar + file grid) */
+.drive-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1.5rem;
+    height: calc(100vh - 170px);
+}
+
+/* Folder list sidebar in the Drive */
+.drive-sidebar {
+    overflow-y: auto;
+}
+
+.drive-sidebar h3 {
+    margin-bottom: 1rem;
+}
+
+.drive-sidebar .team-drive-header {
+    margin-top: 1.5rem;
+}
+
+/* An individual folder in the list */
+.folder-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    word-break: break-word; /* FIX: Prevents long folder names from overflowing */
+}
+
+.folder-list li:hover {
+    background-color: var(--border-color);
+}
+
+/* Style for the currently selected folder */
+.folder-list li.active {
+    background-color: color-mix(in srgb, var(--accent-start) 10%, transparent);
+    color: var(--text-primary);
+    border-left-color: var(--accent-start);
+}
+
+/* Main area of the Drive page where files are displayed */
+.drive-main {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Action buttons for the Drive (e.g., "Create Folder", "Upload File") */
+.drive-actions {
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Small note about upload limits */
+.upload-note {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Grid container for files and folders */
+.files-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    align-content: start;
+    overflow-y: auto;
+    padding-bottom: 1rem;
+}
+
+/* A single file or folder item in the grid */
+.file-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Special style for a pinned file item */
+.file-item.pinned {
+    border-color: var(--accent-start);
+    box-shadow: 0 0 15px -5px color-mix(in srgb, var(--accent-start) 50%, transparent);
+}
+
+/* The icon representing the file type */
+.file-item-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    pointer-events: none;
+}
+
+/* The name of the file or folder */
+.file-item-name {
+    font-weight: 500;
+    word-break: break-word;
+    line-height: 1.4;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Action buttons (e.g., Pin, Delete) that appear on hover */
+.file-item-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.file-item:hover .file-item-actions {
+    opacity: 1;
+}
+
+/* A single action button for a file item */
+.item-action-btn {
+    background-color: color-mix(in srgb, var(--text-secondary) 20%, transparent);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.item-action-btn:hover {
+    background-color: color-mix(in srgb, var(--text-secondary) 40%, transparent);
+}
+
+.item-action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Special color for the delete button */
+.delete-item-btn {
+    background-color: color-mix(in srgb, red 20%, transparent);
+    color: red;
+}
+
+.delete-item-btn:hover {
+    background-color: color-mix(in srgb, red 40%, transparent);
+}
+
+/* Style for the pin button when an item is pinned */
+.pin-item-btn.pinned {
+    background-color: color-mix(in srgb, var(--accent-start) 30%, transparent);
+    color: var(--accent-start);
+}
+
+/* Breadcrumb navigation for the Drive */
+#drive-breadcrumb {
+    color: var(--text-secondary);
+}
+
+#drive-breadcrumb .breadcrumb-link {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#drive-breadcrumb .breadcrumb-link:hover {
+    color: var(--accent-start);
+}
+
+/* --- Encryption Indicator Feature --- */
+/* Style for the small lock icon indicating encryption */
+.encryption-indicator {
+    position: relative;
+    cursor: help;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+}
+
+.encryption-indicator svg {
+    width: 16px;
+    height: 16px;
+    color: var(--text-secondary);
+}
+
+/* Tooltip for the encryption indicator */
+.encryption-indicator::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 10;
+    margin-bottom: 5px;
+}
+
+.encryption-indicator:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== NEW MESSAGES / CHAT PAGE STYLES ===== */
+/* Main layout for the chat page (conversation list + chat window) */
+.chat-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1.5rem;
+    height: calc(100vh - 190px);
+}
+
+/* Sidebar containing the list of conversations */
+.chat-sidebar {
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+/* ================================================= */
+/* ===== CUSTOM SCROLLBAR STYLES (IMPROVEMENT) ===== */
+/* ================================================= */
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--text-secondary) 50%, transparent);
+}
+
+/* Heading for a group of conversations (e.g., "Teams", "Direct Messages") */
+.conversation-group h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 1rem;
+    letter-spacing: 0.5px;
+}
+
+/* A single conversation item in the list */
+.conversation-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.conversation-item.active {
+    background-color: color-mix(in srgb, var(--accent-start) 10%, transparent);
+    border-left-color: var(--accent-start);
+}
+
+.conversation-item:hover {
+    background-color: var(--border-color);
+}
+
+.conversation-item .avatar {
+    width: 36px;
+    height: 36px;
+}
+
+/* Container for conversation name and last message */
+.conversation-info {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.conversation-info .name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Preview of the last message */
+.conversation-info .last-message {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Metadata for a conversation (timestamp, unread count) */
+.conversation-meta {
+    text-align: right;
+}
+
+.conversation-meta .timestamp {
+    font-size: 0.75rem;
+}
+
+/* Badge for unread messages */
+.conversation-meta .unread-badge {
+    background-color: var(--accent-start);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.25rem;
+}
+
+/* Main chat window */
+.chat-main {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Placeholder when no chat is open */
+#chat-placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    color: var(--text-secondary);
+}
+
+/* The active chat view container */
+#chat-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header of the chat window */
+.chat-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chat-header-info {
+    flex: 1;
+}
+
+.chat-header h3 {
+    font-size: 1.25rem;
+}
+
+.chat-header p {
+    font-size: 0.9rem;
+}
+
+/* Container for all chat messages */
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* A group of messages from the same author */
+.message-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.message-group .avatar {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.message-content .author {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.message-content .text {
+    line-height: 1.6;
+}
+
+.message-content .timestamp {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+}
+
+/* The form for typing and sending a new message */
+.chat-input-form {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.chat-input-wrapper {
+    flex-grow: 1;
+    position: relative;
+}
+
+#chat-message-input {
+    width: 100%;
+    padding: 12px 48px 12px 16px; /* Right padding for attach button */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+#chat-message-input:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-start) 20%, transparent);
+}
+
+/* Attach file button inside the input field */
+#chat-attach-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* Send button */
+.chat-input-form .btn {
+    padding: 12px;
+}
+
+/* --- Settings Page --- */
+/* Main container for all setting cards */
+.settings-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.setting-card h3 {
+    margin-bottom: 1.5rem;
+}
+
+.setting-card .setting-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.setting-card #upload-brand-data-btn,
+.setting-card #export-data-btn {
+    margin-top: 1rem;
+}
+
+.settings-form .form-group {
+    max-width: 400px;
+}
+
+/* Multi-Factor Authentication toggle */
+.mfa-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 400px;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.mfa-toggle span {
+    font-weight: 600;
+}
+
+/* List of uploaded brand files */
+.brand-files-list {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* A single brand file item */
+.brand-file-item {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-file-item .delete-brand-file-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.brand-file-item .delete-brand-file-btn:hover {
+    color: red;
+}
+
+/* Info box displaying current backup settings */
+.backup-info {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.backup-info p {
+    line-height: 1.7;
+}
+
+.backup-info strong {
+    color: var(--text-primary);
+}
+
+/* --- MFA MODAL STYLES --- */
+/* Container for the steps in the MFA setup modal */
+.mfa-setup-steps {
+    min-height: 300px;
+}
+
+.mfa-step {
+    display: none;
+}
+
+.mfa-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.mfa-step h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* List of suggested authenticator apps */
+.mfa-app-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.mfa-app-list li {
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Container for the QR code */
+.qr-code-container {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Placeholder for the QR code image */
+.qr-code-placeholder {
+    display: inline-block;
+    padding: 2rem;
+    background-color: var(--bg-primary);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.qr-code-placeholder svg {
+    color: var(--text-secondary);
+}
+
+/* Style for the secret key shown below the QR code */
+.mfa-secret-key {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.mfa-secret-key code {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--accent-start);
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+}
+
+/* Indicator dots for the steps (e.g., 1 of 3) */
+.mfa-step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background-color: var(--accent-start);
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* ===== 6. MODALS ===== */
+
+/* Full-screen overlay for modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: none;
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+/* Shows the overlay when active */
+.modal-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Base modal container */
+.modal {
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    max-height: 90vh;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+}
+
+/* A larger variant of the modal */
+.modal-large {
+    max-width: 1400px;
+    width: 95%;
+    height: 90vh;
+}
+
+#version-history-modal {
+    max-width: 800px;
+}
+
+#compose-message-modal {
+    max-width: 650px;
+}
+
+/* Shows the modal with a scale-up animation */
+.modal.active {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Modal header section */
+.modal-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+}
+
+.modal-header .close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Modal body section (scrollable content) */
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Modal footer for action buttons */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+/* ========================================================= */
+/* ===== PROJECT WORKSPACE MODAL (IMPROVEMENT BEGINS) ===== */
+/* ========================================================= */
+
+.project-header-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-body-workspace {
+    padding: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Main layout for the project workspace modal */
+.workspace-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Sidebar navigation within the workspace modal */
+.workspace-sidebar {
+    background-color: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
+    padding: 1rem 0;
+    overflow-y: auto;
+}
+
+.workspace-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* An individual navigation item in the workspace sidebar */
+.workspace-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.5rem;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    position: relative;
+    width: 100%;
+}
+
+.workspace-nav-item:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.workspace-nav-item.active {
+    background-color: color-mix(in srgb, var(--accent-start) 10%, transparent);
+    color: var(--text-primary);
+    border-left-color: var(--accent-start);
+    font-weight: 600;
+}
+
+.workspace-nav-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Notification badge for items like "Chat" */
+.notification-badge {
+    margin-left: auto;
+    background-color: var(--accent-start);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Main content area for the selected workspace tab */
+.workspace-content {
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+}
+
+.workspace-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.workspace-tab-content.active {
+    display: block;
+}
+
+/* A section within a workspace tab */
+.workspace-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.workspace-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.workspace-section h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* FIX: ISSUE 1 - Adds space between project description and the edit button */
+#project-description-text {
+    margin-bottom: 1rem;
+}
+
+/* Grid for displaying team members */
+.team-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.team-member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.team-member-card .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.team-member-card .name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.team-member-card .role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Grid for quick statistics on the overview tab */
+.quick-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-start);
+}
+
+/* Headers for workspace tabs (e.g., Timeline, Tasks) */
+.timeline-header,
+.tasks-header,
+.notes-header,
+.files-header,
+.chat-header-bar {
+    /* FIX: ISSUE 2 - Added .chat-header-bar to align the video call button properly */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* --- Timeline Styles --- */
+.timeline-container {
+    position: relative;
+}
+
+/* The vertical line of the timeline */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+/* A single event in the timeline */
+.timeline-event {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+/* The dot on the timeline for each event */
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    left: 0; /* FIX: ISSUE 3 - Aligns the dot perfectly onto the vertical line */
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent-start);
+    
+    border: 3px solid var(--bg-secondary);
+    z-index: 1;
+}
+
+.timeline-event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-event-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.timeline-event-time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.timeline-event-content {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.timeline-event-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* --- Task Board Styles (Kanban) --- */
+.task-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    min-height: 500px;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+/* A single column on the task board (e.g., "To Do", "In Progress") */
+.task-column {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-column h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Badge showing the number of tasks in a column */
+.task-count {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* List of tasks within a column */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 100px;
+    flex-grow: 1;
+}
+
+/* A single draggable task card */
+.task-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.task-card:hover {
+    border-color: var(--accent-start);
+    box-shadow: 0 4px 12px -5px var(--accent-start);
+}
+
+.task-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.task-card-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+/* Badge for task priority (High, Medium, Low) */
+.task-priority {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.task-priority.high {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #EF4444;
+}
+.task-priority.medium {
+    background-color: rgba(251, 191, 36, 0.2);
+    color: #FBBF24;
+}
+.task-priority.low {
+    background-color: rgba(74, 222, 128, 0.2);
+    color: #4ADE80;
+}
+
+.task-card-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.task-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.task-assignee {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.task-assignee .avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+}
+
+/* --- Notes Grid --- */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.note-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card:hover {
+    border-color: var(--accent-start);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px -5px var(--accent-start);
+}
+
+.note-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.note-card-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.note-card-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.note-action-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.note-action-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.note-card-content {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.note-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Project Chat --- */
+.project-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: calc(90vh - 200px);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.chat-messages-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* A single chat message */
+.chat-message {
+    display: flex;
+    gap: 1rem;
+    animation: slideIn 0.3s ease-out;
+    max-width: 80%;
+}
+
+/* Style for messages sent by the current user (aligned to the right) */
+.chat-message.is-user {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-message .avatar {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+    width: 32px;
+    height: 32px;
+}
+
+/* The bubble containing the message text */
+.chat-message-bubble {
+    background-color: var(--bg-secondary);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+}
+
+/* Different background for the user's own message bubble */
+.chat-message.is-user .chat-message-bubble {
+    background-color: color-mix(in srgb, var(--accent-start) 20%, transparent);
+}
+
+.chat-message-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.chat-message-author {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.chat-message-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.chat-message-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* The input area at the bottom of the chat */
+.chat-input-container {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+#project-chat-form {
+    display: flex;
+    gap: 0.75rem;
+}
+
+#project-chat-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+#project-chat-input:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-start) 20%, transparent);
+}
+
+#project-chat-form button {
+    padding: 0.75rem 1rem;
+}
+
+/* --- Project Files Grid --- */
+.project-files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-file-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.project-file-card:hover {
+    border-color: var(--accent-start);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px -5px var(--accent-start);
+}
+
+.project-file-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.project-file-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+.project-file-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+/* ===== END OF PROJECT WORKSPACE IMPROVEMENT ===== */
+
+/* ===== CORRECTED VIDEO CONFERENCE STYLES ===== */
+.modal-body-video {
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-conference-container {
+    display: flex;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+.video-call-header-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.call-duration {
+    font-size: 1rem;
+    color: var(--accent-start);
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+}
+
+.video-main-area {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: padding-right 0.3s ease;
+}
+
+.video-sidebar.active~.video-main-area {
+    padding-right: 310px; /* Make space for the sidebar */
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    align-content: start;
+}
+
+.video-participant {
+    position: relative;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: border, box-shadow;
+}
+
+/* Highlights the person who is currently speaking */
+.video-participant.active-speaker {
+    border-color: var(--accent-start);
+    box-shadow: 0 0 20px rgba(200, 117, 51, 0.5);
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+.avatar-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   
+    background-image: var(--accent-gradient);
+
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.participant-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.mic-status {
+    font-size: 1rem;
+}
+
+.mic-status.muted {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* The control bar at the bottom of the video call */
+.video-controls {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    z-index: 20;
+    transition: opacity 0.3s;
+}
+
+/* Individual control button (Mute, Camera, etc.) */
+.video-control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2a2a2a;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.video-control-btn:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.1);
+}
+
+.video-control-btn.active {
+    background-color: var(--accent-start);
+}
+
+.video-control-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Special color for the "End Call" button */
+.end-call-btn {
+    background-color: #dc2626;
+}
+
+.end-call-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* Badge showing the number of participants */
+.participant-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: var(--accent-start);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* The sidebar that shows the participant list */
+.video-sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: #1a1a1a;
+    border-left: 1px solid #333;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 30;
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-sidebar.active {
+    transform: translateX(0);
+}
+
+.video-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+
+.video-sidebar-header h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.close-sidebar-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-sidebar-btn:hover {
+    color: #fff;
+}
+
+.participants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.participant-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+}
+
+.participant-item .avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    background-color: var(--accent-start);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.participant-item .participant-name {
+    flex: 1;
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.participant-item .participant-status {
+    font-size: 1rem;
+}
+
+/* Styles for the "View Content" modal body */
+#view-content-body {
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+/* --- Version History Modal Styles --- */
+.version-history-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1.5rem;
+    padding: 0;
+}
+
+.version-list-panel {
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.version-list-panel h4,
+.version-preview-panel h4 {
+    margin-bottom: 1rem;
+}
+
+#version-list li {
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+#version-list li .version-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: block;
+    margin-top: 0.25rem;
+}
+
+#version-list li:hover {
+    background-color: var(--border-color);
+}
+
+#version-list li.active {
+    background-color: color-mix(in srgb, var(--accent-start) 20%, transparent);
+    color: var(--accent-start);
+    font-weight: 600;
+}
+
+.version-preview-panel {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#version-preview-content {
+    flex-grow: 1;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    min-height: 200px;
+}
+
+/* --- Manage Contributors Modal Styles --- */
+.contributors-list-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.contributor-item-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.contributor-item-modal button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.contributor-item-modal button:hover {
+    color: red;
+}
+
+.add-contributor-form {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* ===== 7. UTILITIES & RESPONSIVENESS ===== */
+
+/* Utility class to completely hide an element */
+.hidden {
+    display: none !important;
+}
+
+/* --- Responsive styles for tablets and smaller desktops --- */
+@media (max-width: 992px) {
+    .sidebar-toggle {
+        display: none; /* Hide desktop toggle */
+    }
+
+    /* Make the sidebar a slide-out menu on mobile */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        box-shadow: 10px 0 30px -10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    /* Show the mobile header with the hamburger icon */
+    .main-header {
+        display: block;
+    }
+
+    /* Dim the background when the mobile nav is open */
+    body.nav-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+    }
+
+    .page-header-info h1 {
+        font-size: 2rem;
+    }
+
+    /* Stack grid layouts on smaller screens */
+    .teams-layout,
+    .drive-layout,
+    .chat-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .chat-sidebar {
+        height: 250px;
+        max-height: 40vh;
+    }
+
+    /* --- Project Workspace Responsive --- */
+    .workspace-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: 100%;
+    }
+
+    .workspace-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0;
+        height: auto;
+    }
+
+    /* ===== START: FIX FOR MOBILE WORKSPACE TABS ===== */
+    .workspace-nav {
+        flex-direction: row;
+        flex-wrap: wrap;       /* Allow tabs to wrap onto the next line */
+        justify-content: center; /* Center the tabs for a cleaner look */
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+    /* ===== END: FIX FOR MOBILE WORKSPACE TABS ===== */
+
+    .workspace-nav-item {
+        flex-shrink: 0;
+        padding: 0.5rem 1rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 6px;
+    }
+
+    .workspace-nav-item.active {
+        border-left: none;
+        border-bottom-color: var(--accent-start);
+        background-color: var(--border-color);
+    }
+}
+
+/* --- Responsive styles for smaller tablets and large phones --- */
+@media (max-width: 768px) {
+    .version-history-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .version-list-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 200px;
+    }
+
+    .ideas-table {
+        font-size: 0.9rem;
+    }
+
+    .ideas-table td,
+    .ideas-table th {
+        padding: 0.75rem;
+    }
+
+    /* Make AI studio tabs horizontally scrollable */
+    .ai-studio-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+    }
+
+    .studio-tab {
+        flex-shrink: 0;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .teams-panel-left,
+    .drive-sidebar {
+        max-height: 300px;
+    }
+
+    #chat-placeholder {
+        min-height: 200px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* --- Workspace Modal Responsive --- */
+    .workspace-content {
+        padding: 1.5rem;
+    }
+
+    .task-board {
+        grid-template-columns: 1fr; /* Stack columns vertically */
+        overflow-x: hidden;
+    }
+
+    .notes-grid,
+    .project-files-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-members-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    /* --- VIDEO CONFERENCE MOBILE STYLES --- */
+    .video-main-area {
+        padding: 0.75rem;
+        padding-bottom: 100px; /* Space for controls */
+        padding-right: 0.75rem !important; /* Override desktop style */
+    }
+
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .avatar-large {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .video-controls {
+        width: 90%;
+        bottom: 1rem;
+        padding: 0.5rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .video-control-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .video-control-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .video-sidebar {
+        width: 280px;
+        max-width: 85%;
+    }
+}
+
+/* --- Responsive styles for small phones --- */
+@media (max-width: 576px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .invite-form {
+        width: 100%;
+        max-width: none;
+    }
+
+    .video-grid {
+        /* Single column on very small screens for better viewing */
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis Authentication</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/auth.css"> 
+    
+
+</head>
+
+<body>
+    <div class="aurora-background">
+        <div class="aurora-dot"></div>
+        <div class="aurora-dot"></div>
+        <div class="aurora-dot"></div>
+    </div>
+
+    <div class="auth-page-wrapper">
+        <div class="auth-container">
+            <div class="auth-visual-panel">
+                <div class="visual-orb-container">
+                    <div id="auth-orb"></div>
+                </div>
+            </div>
+
+            <div class="auth-form-panel">
+                <!-- Login Form -->
+                <div class="auth-card" id="login-card">
+                    <div class="auth-header">
+                        <a href="#" class="logo">MuseLink</a>
+                        <h1>Welcome Back</h1>
+                        <p>Sign in to continue your creative journey.</p>
+                    </div>
+                    <form class="auth-form" id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="input-icon">
+                                    <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+                                    <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+                                </svg>
+                                <input type="email" id="login-email" name="email" placeholder="you@example.com" value="creative.user@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="input-icon">
+                                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                </svg>
+                                <input type="password" id="login-password" name="password" placeholder="••••••••" value="password123" required>
+                                <button type="button" class="password-toggle" aria-label="Show password">
+                                    <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.432 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <svg class="eye-slash-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="display: none;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options"><a href="#" class="auth-link" data-action="show-forgot">Forgot Password?</a></div>
+                        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                    </form>
+                    <div class="auth-divider"><span>OR</span></div>
+                    <div class="social-logins">
+                        <button class="btn btn-social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.222,0-9.658-3.356-11.303-7.962l-6.571,4.819C9.656,39.663,16.318,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571l6.19,5.238C44.577,34.131,48,27.455,48,20C48,16.038,46.125,12.23,43.611,20.083z"></path></svg><span>Sign in with Google</span></button>
+                    </div>
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="#" class="auth-link" data-action="show-signup">Sign Up</a></p>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <div class="auth-card" id="signup-card">
+                    <div class="auth-header">
+                        <a href="#" class="logo">MuseLink</a>
+                        <h1>Create Your Account</h1>
+                        <p>Start your journey into AI-powered creativity.</p>
+                    </div>
+                    <form class="auth-form" id="signup-form">
+                        <div class="form-row">
+                            <div class="form-group"><label for="first_name">First Name</label><div class="input-wrapper"><input type="text" id="first_name" name="first_name" placeholder="John" required></div></div>
+                            <div class="form-group"><label for="last_name">Last Name</label><div class="input-wrapper"><input type="text" id="last_name" name="last_name" placeholder="Doe" required></div></div>
+                        </div>
+                        <div class="form-group"><label for="username">Username</label><div class="input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="input-icon"><path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.095a1.23 1.23 0 00.41-1.412A9.99 9.99 0 0010 12c-2.31 0-4.438.784-6.131-2.095z" /></svg><input type="text" id="username" name="username" placeholder="johndoe" required></div></div>
+                        <div class="form-group"><label for="signup-email">Email</label><div class="input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="input-icon"><path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" /><path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" /></svg><input type="email" id="signup-email" name="email" placeholder="you@example.com" required></div></div>
+                        <div class="form-group"><label for="signup-password">Password</label><div class="input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="input-icon"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" /></svg><input type="password" id="signup-password" name="password" placeholder="Minimum 8 characters" required><button type="button" class="password-toggle" aria-label="Show password"><svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.432 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg><svg class="eye-slash-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" /></svg></button></div></div>
+                        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    </form>
+                    <div class="auth-divider"><span>OR</span></div>
+                    <div class="social-logins"><button class="btn btn-social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.222,0-9.658-3.356-11.303-7.962l-6.571,4.819C9.656,39.663,16.318,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571l6.19,5.238C44.577,34.131,48,27.455,48,20C48,16.038,46.125,12.23,43.611,20.083z"></path></svg><span>Sign up with Google</span></button></div>
+                    <div class="auth-footer"><p>Already have an account? <a href="#" class="auth-link" data-action="show-login">Sign In</a></p></div>
+                </div>
+
+                <!--  forget Form -->
+                <div class="auth-card" id="forgot-card">
+                    <div class="auth-header">
+                        <a href="#" class="logo">MuseLink</a>
+                        <h1>Forgot Password?</h1>
+                        <p>No worries, we'll send you reset instructions.</p>
+                    </div>
+                    <form class="auth-form" id="forgot-form">
+                        <div class="form-group"><label for="forgot-email">Email</label><div class="input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="input-icon"><path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" /><path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" /></svg><input type="email" id="forgot-email" name="email" placeholder="you@example.com" required></div></div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Reset Link</button>
+                    </form>
+                    <div class="auth-footer">
+                        <p><a href="#" class="auth-link" data-action="show-login">← Back to Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/auth.js"></script>
+
+</body>
+</html>

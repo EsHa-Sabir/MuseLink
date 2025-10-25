@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/user-dashboard.css">
+</head>
+
+<body>
+    <div class="aurora-background">
+        <div class="aurora-dot"></div>
+        <div class="aurora-dot"></div>
+        <div class="aurora-dot"></div>
+    </div>
+    <div class="dashboard-wrapper">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="logo">MuseLink</a>
+                <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Sidebar">
+                    <svg class="icon-collapse" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <line x1="9" y1="3" x2="9" y2="21" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="my-ideas-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>My Ideas</span>
+                </a>
+                <a href="#" class="nav-item" data-page="create-idea-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3 16.828V21h4.172l14-14.188z M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5 M9.5 16.5l1-1 M4.5 12.5l1-1" />
+                    </svg>
+                    <span>Create Idea</span>
+                </a>
+                <a href="#" class="nav-item" data-page="teams-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Teams</span>
+                </a>
+                <a href="#" class="nav-item" data-page="drive-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>Drive</span>
+                </a>
+                <a href="#" class="nav-item" data-page="messages-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>Messages</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="theme-switcher-wrapper">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <span>Theme</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <a href="#" class="nav-item" data-page="settings-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                    <span>Settings</span>
+                </a>
+                <a href="auth.html" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        <!-- Dashboard  -->
+        <main class="main-content" id="main-content">
+            <header class="main-header">
+                <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </header>
+
+
+            <!-- dashboard page -->
+            <div class="page is-active" id="dashboard-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Dashboard</h1>
+                        <p>Welcome back, Creative!</p>
+                    </div>
+                    <button class="btn btn-primary" id="dashboard-create-new-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Create New Idea
+                    </button>
+                </div>
+                <div class="stats-grid" id="stats-grid"></div>
+                <div class="card recent-ideas">
+                    <h2>Recent Ideas</h2>
+                    <div class="ideas-list" id="recent-ideas-list"></div>
+                </div>
+            </div>
+            <!-- My ideas -->
+            <div class="page" id="my-ideas-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>My Ideas</h1>
+                        <p>Manage all your creative projects in one place.</p>
+                    </div>
+                </div>
+                <div class="card table-container">
+                    <table class="ideas-table">
+                        <thead>
+                            <tr>
+                                <th>Idea Title</th>
+                                <th>Status</th>
+                                <th>Team</th>
+                                <th>Contributors</th>
+                                <th>Created Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all-ideas-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- AI Creative Studio -->
+            <div class="page" id="create-idea-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>AI Creative Studio</h1>
+                        <p>Generate images, videos, voice, and scripts with AI</p>
+                    </div>
+                </div>
+
+                <div class="ai-studio-tabs">
+                    <button class="studio-tab active" data-tab="text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        Text & Scripts
+                    </button>
+                    <button class="studio-tab" data-tab="image">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        Images
+                    </button>
+                    <button class="studio-tab" data-tab="video">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                        Videos
+                    </button>
+                    <button class="studio-tab" data-tab="voice">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        Voice
+                    </button>
+                </div>
+                <!-- Text & script -->
+                <div class="studio-content active" id="text-studio">
+                    <div class="form-container card">
+                        <form class="idea-form" id="idea-form">
+                            <div class="form-section">
+                                <h3>Project Details</h3>
+                                <div class="form-group">
+                                    <label for="project-title">Project Title</label>
+                                    <input type="text" id="project-title" name="title"
+                                        placeholder="e.g., Summer Campaign 2025" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="project-type">Content Type</label>
+                                    <select id="project-type" name="type" required>
+                                        <option value="">Select type...</option>
+                                        <option value="Copywriting">Copywriting</option>
+                                        <option value="Script">Script / Screenplay</option>
+                                        <option value="Storyboard">Storyboard</option>
+                                        <option value="Social Media">Social Media Post</option>
+                                        <option value="Email Campaign">Email Campaign</option>
+                                        <option value="Blog Post">Blog Post</option>
+                                        <option value="Video Script">Video Script</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="project-description">Description</label>
+                                    <textarea id="project-description" name="description" rows="3"
+                                        placeholder="Briefly describe your creative vision..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-section">
+                                <h3>Creative Direction</h3>
+                                <div class="form-group">
+                                    <label for="brand-voice">Brand Voice & Tone</label>
+                                    <textarea id="brand-voice" name="brand_voice" rows="3"
+                                        placeholder="e.g., Professional yet friendly, witty, inspirational..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="target-audience">Target Audience</label>
+                                    <textarea id="target-audience" name="target_audience" rows="3"
+                                        placeholder="Who is this for? (demographics, interests, pain points)"
+                                        required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="key-messages">Key Messages</label>
+                                    <textarea id="key-messages" name="key_messages" rows="4"
+                                        placeholder="What are the main points you want to communicate?"
+                                        required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="idea-cancel-btn">Cancel</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                    </svg>
+                                    Generate Drafts
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Image Studio -->
+                <div class="studio-content" id="image-studio">
+                    <div class="form-container card">
+                        <form class="ai-form" id="image-form">
+                            <div class="form-section">
+                                <h3>Image Generation</h3>
+                                <div class="form-group">
+                                    <label for="image-prompt">Describe Your Image</label>
+                                    <textarea id="image-prompt" rows="4"
+                                        placeholder="e.g., A futuristic cityscape at sunset with flying cars, cyberpunk style, vibrant neon colors..."
+                                        required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="image-style">Art Style</label>
+                                        <select id="image-style">
+                                            <option value="realistic">Realistic</option>
+                                            <option value="digital-art">Digital Art</option>
+                                            <option value="oil-painting">Oil Painting</option>
+                                            <option value="watercolor">Watercolor</option>
+                                            <option value="anime">Anime</option>
+                                            <option value="3d-render">3D Render</option>
+                                            <option value="minimalist">Minimalist</option>
+                                            <option value="abstract">Abstract</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image-ratio">Aspect Ratio</label>
+                                        <select id="image-ratio">
+                                            <option value="1:1">Square (1:1)</option>
+                                            <option value="16:9">Landscape (16:9)</option>
+                                            <option value="9:16">Portrait (9:16)</option>
+                                            <option value="4:3">Standard (4:3)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                    </svg>
+                                    Generate Images
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Video Studio -->
+                <div class="studio-content" id="video-studio">
+                    <div class="form-container card">
+                        <form class="ai-form" id="video-form">
+                            <div class="form-section">
+                                <h3>Video Generation</h3>
+                                <div class="form-group">
+                                    <label for="video-prompt">Video Concept</label>
+                                    <textarea id="video-prompt" rows="4"
+                                        placeholder="Describe the video scene, action, and mood..." required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="video-duration">Duration</label>
+                                        <select id="video-duration">
+                                            <option value="5">5 seconds</option>
+                                            <option value="10">10 seconds</option>
+                                            <option value="15">15 seconds</option>
+                                            <option value="30">30 seconds</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="video-style">Video Style</label>
+                                        <select id="video-style">
+                                            <option value="cinematic">Cinematic</option>
+                                            <option value="animated">Animated</option>
+                                            <option value="documentary">Documentary</option>
+                                            <option value="commercial">Commercial</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                    </svg>
+                                    Generate Video
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Voice Studio -->
+                <div class="studio-content" id="voice-studio">
+                    <div class="form-container card">
+                        <form class="ai-form" id="voice-form">
+                            <div class="form-section">
+                                <h3>Voice Generation</h3>
+                                <div class="form-group">
+                                    <label for="voice-text">Text to Speak</label>
+                                    <textarea id="voice-text" rows="6"
+                                        placeholder="Enter the text you want to convert to speech..."
+                                        required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="voice-type">Voice Type</label>
+                                        <select id="voice-type">
+                                            <option value="male-professional">Male - Professional</option>
+                                            <option value="female-professional">Female - Professional</option>
+                                            <option value="male-casual">Male - Casual</option>
+                                            <option value="female-casual">Female - Casual</option>
+                                            <option value="male-narrator">Male - Narrator</option>
+                                            <option value="female-narrator">Female - Narrator</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="voice-speed">Speed</label>
+                                        <select id="voice-speed">
+                                            <option value="0.75">Slow</option>
+                                            <option value="1.0" selected>Normal</option>
+                                            <option value="1.25">Fast</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                    </svg>
+                                    Generate Voice
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Idea Results -->
+            <div class="page" id="draft-results-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1 id="results-page-title">Generated Drafts</h1>
+                        <p>Here are some AI-powered starting points. Select one to refine or regenerate.</p>
+                    </div>
+                </div>
+                <div class="results-grid" id="results-grid-container"></div>
+            </div>
+            <!-- Refine ideas -->
+            <div class="page" id="refine-editor-page" data-idea-id="">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1 id="refine-page-title">Refine Idea</h1>
+                        <p>Add your human touch. Polish the content and save the final version.</p>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <textarea id="refine-textarea" class="refine-textarea" rows="20"></textarea>
+                    <div class="editor-actions">
+                        <button class="btn btn-secondary" id="view-versions-btn">View Version History</button>
+                        <button class="btn btn-primary" id="save-final-idea-btn">Save New Version</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Team -->
+            <div class="page" id="teams-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Teams</h1>
+                        <p>Collaborate with your colleagues on creative projects.</p>
+                    </div>
+                </div>
+                <div class="teams-layout">
+                    <div class="teams-panel-left card">
+                        <div class="teams-list-container">
+                            <h3>My Teams</h3>
+                            <ul class="teams-list" id="teams-list"></ul>
+                        </div>
+                        <div class="create-team-container">
+                            <h3>Create New Team</h3>
+                            <form id="create-team-form" class="create-team-form">
+                                <div class="form-group">
+                                    <label for="team-name" class="sr-only">Team Name</label>
+                                    <input type="text" id="team-name" placeholder="e.g., Marketing Crew" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">Create Team</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="teams-panel-right card" id="team-details-panel">
+                        <div id="team-details-placeholder">
+                            <p>Select a team to see details.</p>
+                        </div>
+                        <div id="team-details-content" class="hidden">
+                            <div class="team-header">
+                                <h2 id="selected-team-name"></h2>
+                                <form id="invite-member-form" class="invite-form">
+                                    <input type="email" id="invite-email" placeholder="Enter email to invite" required>
+                                    <button type="submit" class="btn btn-primary">Invite</button>
+                                </form>
+                            </div>
+                            <h3>Members</h3>
+                            <ul class="team-members-list" id="team-members-list"></ul>
+                            <div class="team-ideas-container">
+                                <h3>Team Ideas</h3>
+                                <div class="ideas-list" id="team-ideas-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Drive -->
+            <div class="page" id="drive-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Drive</h1>
+                        <p id="drive-breadcrumb">Your secure storage for brand assets, notes, and files.</p>
+                    </div>
+                </div>
+                <div class="drive-layout">
+                    <div class="drive-sidebar card">
+                        <h3>My Drive</h3>
+                        <ul class="folder-list" id="my-drive-list"></ul>
+                        <h3 class="team-drive-header">Team Drives</h3>
+                        <ul class="folder-list" id="team-drives-list"></ul>
+                    </div>
+                    <div class="drive-main">
+                        <div class="drive-actions">
+                            <button class="btn btn-secondary" id="create-folder-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z">
+                                    </path>
+                                    <line x1="12" y1="10" x2="12" y2="16"></line>
+                                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                                </svg>
+                                Create Folder
+                            </button>
+                            <button class="btn btn-secondary" id="upload-file-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                Upload File
+                            </button>
+                            <input type="file" id="file-upload-input" style="display: none;" multiple>
+                            <button class="btn btn-primary" id="create-note-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="12" y1="13" x2="12" y2="13"></line>
+                                    <line x1="12" y1="17" x2="12" y2="17"></line>
+                                </svg>
+                                Create Note
+                            </button>
+                        </div>
+                        <p class="upload-note">Maximum file size: 10MB.</p>
+                        <div class="files-grid" id="files-grid"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Messages -->
+            <div class="page" id="messages-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Messages</h1>
+                        <p>Secure, end-to-end encrypted communication with your team.</p>
+                    </div>
+                    <button class="btn btn-primary" id="start-conversation-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        </svg>
+                        Start Conversation
+                    </button>
+                </div>
+                <div class="chat-layout">
+                    <div class="chat-sidebar card">
+                        <div id="conversation-list">
+                        </div>
+                    </div>
+                    <div class="chat-main card" id="chat-main-panel">
+                        <div id="chat-placeholder">
+                            <p>Select a conversation to start messaging.</p>
+                        </div>
+                        <div id="chat-view" class="hidden">
+                            <div class="chat-header">
+                                <div class="chat-header-info">
+                                    <h3 id="chat-title"></h3>
+                                    <p id="chat-subtitle"></p>
+                                </div>
+                                <button class="btn btn-primary" id="start-team-video-call-btn" style="display: none;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                    </svg>
+                                    Start Video Call
+                                </button>
+                            </div>
+                            <div class="chat-messages" id="chat-messages-list">
+                            </div>
+                            <div class="chat-input-area">
+                                <div id="chat-attachments-preview" class="chat-attachments-preview"></div>
+                                <form class="chat-input-form" id="chat-input-form">
+                                    <div class="chat-input-wrapper">
+                                        <input type="text" id="chat-message-input"
+                                            placeholder="Type a secure message..." required autocomplete="off">
+                                        <button type="button" id="chat-attach-btn" title="Attach Files">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <input type="file" id="chat-file-input" multiple style="display: none;">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Settings -->
+            <div class="page" id="settings-page">
+                <div class="page-header">
+                    <div class="page-header-info">
+                        <h1>Settings</h1>
+                        <p>Manage your account, security, and brand preferences.</p>
+                    </div>
+                </div>
+                <div class="settings-container">
+                    <div class="setting-card card">
+                        <h3>Change Password</h3>
+                        <form id="change-password-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input type="password" id="current-password" placeholder="••••••••" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input type="password" id="current-password" placeholder="••••••••" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </form>
+                    </div>
+                    <div class="setting-card card">
+                        <h3>Multi-Factor Authentication (MFA)</h3>
+                        <div class="mfa-toggle">
+                            <span>Enable MFA</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="mfa-toggle-checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="setting-card card">
+                        <h3>Change Email Address</h3>
+                        <p class="setting-description">Update your email address. You'll need to verify your current
+                            password for security.</p>
+                        <form id="change-email-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="current-email">Current Email</label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                    <input type="email" id="current-email" value="{{ user.email }}" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-email">New Email Address</label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                    <input type="email" id="new-email" placeholder="Enter new email address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-change-password">Current Password (Required)</label>
+                                <div class="input-with-icon">
+                                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input type="password" id="email-change-password" placeholder="Verify your password"
+                                        required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Email Address</button>
+                        </form>
+                    </div>
+                    <div class="setting-card card">
+                        <h3>Backup Schedule Management</h3>
+                        <p>Schedule automatic backups of your personal drive (ideas, notes, and files).</p>
+                        <div id="backup-schedule-display" class="backup-info"></div>
+                        <form id="backup-schedule-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="backup-schedule-name">Schedule Name</label>
+                                <input type="text" id="backup-schedule-name" value="My Personal Backup" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="backup-type">Backup Type</label>
+                                <div class="select-wrapper">
+                                    <select id="backup-type" required>
+                                        <option value="full">Full</option>
+                                        <option value="incremental" disabled>Incremental (coming soon)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="backup-frequency">Frequency</label>
+                                <div class="select-wrapper">
+                                    <select id="backup-frequency" required>
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="backup-retention">Retention (days)</label>
+                                <input type="number" id="backup-retention" value="30" min="7" max="365" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Schedule</button>
+                        </form>
+                    </div>
+                    <div class="setting-card card">
+                        <h3>Brand Training Data</h3>
+                        <p>Upload approved content (PDFs, DOCX) to train the AI for a more consistent brand voice.</p>
+                        <button id="upload-brand-data-btn" class="btn btn-secondary">Upload Data</button>
+                        <input type="file" id="brand-data-input" style="display: none;" multiple>
+                        <div class="brand-files-list" id="brand-files-list">
+                        </div>
+                    </div>
+                    <div class="setting-card card">
+                        <h3>Account Management</h3>
+                        <p>Export all your personal data, including ideas, notes, and files.</p>
+                        <button id="export-data-btn" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Export My Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Notes PopUp -->
+    <div class="modal-overlay" id="modal-overlay">
+
+        <div class="modal" id="view-content-modal">
+            <div class="modal-header">
+                <h2 id="view-content-title"></h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body" id="view-content-body"></div>
+        </div>
+
+        <div class="modal" id="create-note-modal">
+            <div class="modal-header">
+                <h2>Create New Note</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="create-note-form">
+                    <div class="form-group">
+                        <label for="note-title">Note Title</label>
+                        <input type="text" id="note-title" placeholder="My Brilliant Idea" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-content">Content</label>
+                        <textarea id="note-content" rows="10" placeholder="Start writing..."></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Note</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="create-folder-modal">
+            <div class="modal-header">
+                <h2>Create New Folder</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="create-folder-form">
+                    <div class="form-group">
+                        <label for="folder-name">Folder Name</label>
+                        <input type="text" id="folder-name" placeholder="e.g., Campaign Assets" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Folder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="version-history-modal">
+            <div class="modal-header">
+                <h2>Version History</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body version-history-layout">
+                <div class="version-list-panel">
+                    <h4>Versions</h4>
+                    <ul id="version-list"></ul>
+                </div>
+                <div class="version-preview-panel">
+                    <h4>Preview</h4>
+                    <pre id="version-preview-content">Select a version to preview its content.</pre>
+                    <div class="modal-actions">
+                        <button id="restore-version-btn" class="btn btn-primary" disabled>Restore this Version</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="save-version-modal">
+            <div class="modal-header">
+                <h2>Save New Version</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="save-version-form">
+                    <div class="form-group">
+                        <label for="version-description">Describe your changes (optional)</label>
+                        <input type="text" id="version-description"
+                            placeholder="e.g., Refined the intro and added a CTA">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Version</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="manage-contributors-modal">
+            <div class="modal-header">
+                <h2 id="contributors-modal-title">Manage Contributors</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>Current Contributors</h4>
+                <ul id="contributors-list-modal" class="contributors-list-modal"></ul>
+                <form id="add-contributor-form" class="add-contributor-form">
+                    <h4>Add New Contributor</h4>
+                    <div class="form-group">
+                        <label for="contributor-user">Select User</label>
+                        <div class="select-wrapper">
+                            <select id="contributor-user" required>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contributor-role">Assign Role</label>
+                        <div class="select-wrapper">
+                            <select id="contributor-role" required>
+                                <option value="editor">Editor</option>
+                                <option value="viewer">Viewer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary close-modal-btn">Done</button>
+                        <button type="submit" class="btn btn-primary">Add Contributor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="start-conversation-modal">
+            <div class="modal-header">
+                <h2>Start a New Conversation</h2>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="start-conversation-form">
+                    <div class="form-group">
+                        <label for="conversation-recipient">Send a direct message to:</label>
+                        <div class="select-wrapper">
+                            <select id="conversation-recipient" required>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Start Chat</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MFA PopUp -->
+    <div class="modal-overlay" id="mfa-modal-overlay">
+        <div class="modal" id="mfa-setup-modal">
+            <div class="modal-header">
+                <h2>Set Up Multi-Factor Authentication</h2>
+                <button class="close-modal-btn" id="close-mfa-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="mfa-setup-steps">
+                    <div class="mfa-step active" id="mfa-step-1">
+                        <h3>Step 1: Download Authenticator App</h3>
+                        <p>Download an authenticator app on your mobile device:</p>
+                        <ul class="mfa-app-list">
+                            <li>Google Authenticator</li>
+                            <li>Microsoft Authenticator</li>
+                            <li>Authy</li>
+                        </ul>
+                    </div>
+                    <div class="mfa-step" id="mfa-step-2">
+                        <h3>Step 2: Scan QR Code</h3>
+                        <div class="qr-code-container">
+                            <div class="qr-code-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </div>
+                            <p class="mfa-secret-key">Secret Key: <code>ABCD-EFGH-IJKL-MNOP</code></p>
+                        </div>
+                    </div>
+                    <div class="mfa-step" id="mfa-step-3">
+                        <h3>Step 3: Enter Verification Code</h3>
+                        <div class="form-group">
+                            <label for="mfa-code">6-Digit Code</label>
+                            <div class="input-with-icon">
+                                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M12 1v6M12 17v6M4.22 4.22l4.24 4.25M15.54 15.54l4.24 4.25M1 12h6M17 12h6M4.22 19.78l4.24-4.25M15.54 8.46l4.24-4.25">
+                                    </path>
+                                </svg>
+                                <input type="text" id="mfa-code" placeholder="000000" maxlength="6" pattern="[0-9]{6}"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mfa-step-indicator">
+                    <span class="step-dot active"></span>
+                    <span class="step-dot"></span>
+                    <span class="step-dot"></span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="mfa-prev-btn" style="display: none;">Previous</button>
+                <button class="btn btn-primary" id="mfa-next-btn">Next</button>
+                <button class="btn btn-primary" id="mfa-finish-btn" style="display: none;">Enable MFA</button>
+            </div>
+        </div>
+    </div>
+    <!-- Share idea to team Popup -->
+    <div class="modal-overlay" id="share-modal-overlay">
+        <div class="modal" id="share-modal">
+            <div class="modal-header">
+                <h2>Share with Team</h2>
+                <button class="close-modal-btn" id="close-share-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="share-team-select">Select Team</label>
+                    <select id="share-team-select" class="form-control">
+                        <option value="">Choose a team...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="share-message">Message (Optional)</label>
+                    <textarea id="share-message" rows="3" placeholder="Add a note for your team..."></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancel-share-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-share-btn">Share</button>
+            </div>
+        </div>
+    </div>
+    <!-- Team Work Popup -->
+    <div class="modal-overlay" id="project-workspace-overlay">
+        <div class="modal modal-large" id="project-workspace-modal">
+            <div class="modal-header">
+                <div class="project-header-info">
+                    <h2 id="project-workspace-title">Project Title</h2>
+                    <span class="status-badge" id="project-workspace-status">draft</span>
+                </div>
+                <button class="close-modal-btn" id="close-project-workspace">&times;</button>
+            </div>
+            <div class="modal-body modal-body-workspace">
+                <div class="workspace-layout">
+                    <div class="workspace-sidebar">
+                        <nav class="workspace-nav">
+                            <button class="workspace-nav-item active" data-workspace-tab="overview">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Overview
+                            </button>
+                            <button class="workspace-nav-item" data-workspace-tab="timeline">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="2" x2="12" y2="22"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                                Timeline
+                            </button>
+                            <button class="workspace-nav-item" data-workspace-tab="tasks">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                                </svg>
+                                Tasks
+                            </button>
+                            <button class="workspace-nav-item" data-workspace-tab="notes">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Notes
+                            </button>
+                            <button class="workspace-nav-item" data-workspace-tab="chat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Chat
+                                <span class="notification-badge">3</span>
+                            </button>
+                            <button class="workspace-nav-item" data-workspace-tab="files">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
+                                Files
+                            </button>
+                        </nav>
+                    </div>
+
+                    <div class="workspace-content">
+                        <div class="workspace-tab-content active" id="workspace-overview">
+                            <div class="workspace-section">
+                                <h3>Project Description</h3>
+                                <p id="project-description-text">Loading...</p>
+                                <button class="btn btn-sm btn-secondary" id="edit-description-btn">Edit</button>
+                            </div>
+                            <div class="workspace-section">
+                                <h3>Team Members</h3>
+                                <div class="team-members-grid" id="project-team-members"></div>
+                            </div>
+                            <div class="workspace-section">
+                                <h3>Quick Stats</h3>
+                                <div class="quick-stats-grid">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Tasks</span>
+                                        <span class="stat-value" id="stat-tasks">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Completed</span>
+                                        <span class="stat-value" id="stat-completed">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Notes</span>
+                                        <span class="stat-value" id="stat-notes">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Files</span>
+                                        <span class="stat-value" id="stat-files">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="workspace-tab-content" id="workspace-timeline">
+                            <div class="timeline-header">
+                                <h3>Project Timeline</h3>
+                                <button class="btn btn-sm btn-primary" id="add-timeline-event-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Add Event
+                                </button>
+                            </div>
+                            <div class="timeline-container" id="project-timeline"></div>
+                        </div>
+
+                        <div class="workspace-tab-content" id="workspace-tasks">
+                            <div class="tasks-header">
+                                <h3>Task Board</h3>
+                                <button class="btn btn-sm btn-primary" id="add-task-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    New Task
+                                </button>
+                            </div>
+                            <div class="task-board">
+                                <div class="task-column">
+                                    <h4>To Do <span class="task-count">0</span></h4>
+                                    <div class="task-list" id="tasks-todo"></div>
+                                </div>
+                                <div class="task-column">
+                                    <h4>In Progress <span class="task-count">0</span></h4>
+                                    <div class="task-list" id="tasks-inprogress"></div>
+                                </div>
+                                <div class="task-column">
+                                    <h4>Review <span class="task-count">0</span></h4>
+                                    <div class="task-list" id="tasks-review"></div>
+                                </div>
+                                <div class="task-column">
+                                    <h4>Done <span class="task-count">0</span></h4>
+                                    <div class="task-list" id="tasks-done"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="workspace-tab-content" id="workspace-notes">
+                            <div class="notes-header">
+                                <h3>Project Notes</h3>
+                                <button class="btn btn-sm btn-primary" id="add-note-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    New Note
+                                </button>
+                            </div>
+                            <div class="notes-grid" id="project-notes"></div>
+                        </div>
+
+                        <div class="workspace-tab-content" id="workspace-chat">
+                            <div class="chat-header-bar">
+                                <h3>Team Chat</h3>
+                                <button class="btn btn-primary" id="start-video-call-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                    </svg>
+                                    Start Video Call
+                                </button>
+                            </div>
+                            <div class="project-chat-container">
+                                <div class="chat-messages-area" id="project-chat-messages"></div>
+                                <div class="chat-input-container">
+                                    <form id="project-chat-form">
+                                        <input type="text" id="project-chat-input" placeholder="Type a message..."
+                                            required>
+                                        <button type="submit" class="btn btn-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="workspace-tab-content" id="workspace-files">
+                            <div class="files-header">
+                                <h3>Project Files</h3>
+                                <button class="btn btn-sm btn-primary" id="upload-project-file-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    Upload File
+                                </button>
+                            </div>
+                            <div class="project-files-grid" id="project-files"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- Task PopUp -->
+    <div class="modal-overlay" id="add-task-overlay">
+        <div class="modal" id="add-task-modal">
+            <div class="modal-header">
+                <h2>Create New Task</h2>
+                <button class="close-modal-btn" id="close-add-task">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-task-form">
+                    <div class="form-group">
+                        <label for="task-title">Task Title</label>
+                        <input type="text" id="task-title" placeholder="Enter task title.">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Description</label>
+                        <textarea id="task-description" rows="3"
+                            placeholder="Describe the task details, steps, or expected outcome."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="task-assignee">Assign To</label>
+                            <select id="task-assignee">
+                                <option value="">Unassigned</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-priority">Priority</label>
+                            <select id="task-priority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-due-date">Due Date</label>
+                        <input type="date" id="task-due-date">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancel-add-task">Cancel</button>
+                <button class="btn btn-primary" id="confirm-add-task">Create Task</button>
+            </div>
+        </div>
+    </div>
+<!-- Video Call PopUp -->
+    <div class="modal-overlay" id="video-call-overlay">
+        <div class="modal modal-large" id="video-call-modal">
+            <div class="modal-header">
+                <div class="video-call-header-info">
+                    <h2 id="video-call-title">Team Video Call</h2>
+                    <span class="call-duration" id="call-duration">00:00</span>
+                </div>
+                <button class="close-modal-btn" id="close-video-call">&times;</button>
+            </div>
+            <div class="modal-body modal-body-video">
+                <div class="video-conference-container">
+                    <div class="video-main-area">
+                        <div class="video-grid" id="video-grid">
+                            <div class="video-participant active-speaker">
+                                <div class="video-placeholder">
+                                    <div class="avatar-large">YC</div>
+                                    <div class="video-overlay">
+                                        <span class="participant-name">You Creative</span>
+                                        <span class="mic-status">🎤</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-participant">
+                                <div class="video-placeholder">
+                                    <div class="avatar-large">AD</div>
+                                    <div class="video-overlay">
+                                        <span class="participant-name">Alice Designer</span>
+                                        <span class="mic-status muted">🔇</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-participant">
+                                <div class="video-placeholder">
+                                    <div class="avatar-large">BW</div>
+                                    <div class="video-overlay">
+                                        <span class="participant-name">Bob Writer</span>
+                                        <span class="mic-status">🎤</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-controls">
+                        <button class="video-control-btn" id="toggle-mic-btn" title="Mute/Unmute">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                        </button>
+                        <button class="video-control-btn" id="toggle-camera-btn" title="Start/Stop Video">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                            </svg>
+                        </button>
+                        <button class="video-control-btn" id="share-screen-btn" title="Share Screen">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </button>
+                        <button class="video-control-btn" id="toggle-chat-btn" title="Toggle Chat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </button>
+                        <button class="video-control-btn participants-btn" id="toggle-participants-btn"
+                            title="Participants">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span class="participant-count">3</span>
+                        </button>
+                        <button class="video-control-btn end-call-btn" id="end-call-btn" title="End Call">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                                <line x1="23" y1="1" x2="1" y2="23"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="video-sidebar" id="video-participants-sidebar">
+                        <div class="video-sidebar-header">
+                            <h3>Participants (3)</h3>
+                            <button class="close-sidebar-btn" id="close-participants-sidebar"
+                                title="Close Participants">&times;</button>
+                        </div>
+                        <div class="participants-list">
+                            <div class="participant-item">
+                                <div class="avatar">YC</div>
+                                <span class="participant-name">You Creative</span>
+                                <span class="participant-status">🎤</span>
+                            </div>
+                            <div class="participant-item">
+                                <div class="avatar">AD</div>
+                                <span class="participant-name">Alice Designer</span>
+                                <span class="participant-status muted">🔇</span>
+                            </div>
+                            <div class="participant-item">
+                                <div class="avatar">BW</div>
+                                <span class="participant-name">Bob Writer</span>
+                                <span class="participant-status">🎤</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/user-dashboard.js"></script>
+</body>
+
+</html>
